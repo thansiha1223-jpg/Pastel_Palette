@@ -4,7 +4,6 @@ from .models import Product
 
 class ProductSerializer(serializers.ModelSerializer):
 
-    # Field-level validation
     def validate_name(self, value):
         if not value.strip():
             raise serializers.ValidationError(
@@ -19,7 +18,7 @@ class ProductSerializer(serializers.ModelSerializer):
             )
         return value
 
-    # Object-level validation
+    
     def validate(self, data):
         name = data.get(
             'name',
